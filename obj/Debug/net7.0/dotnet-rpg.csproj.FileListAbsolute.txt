@@ -31,3 +31,5 @@
 /home/tryfan/dotnet-rpg/obj/Debug/net7.0/dotnet-rpg.pdb
 /home/tryfan/dotnet-rpg/obj/Debug/net7.0/dotnet-rpg.genruntimeconfig.cache
 /home/tryfan/dotnet-rpg/obj/Debug/net7.0/ref/dotnet-rpg.dll
+/home/tryfan/dotnet-rpg/bin/Debug/net7.0/AutoMapper.dll
+/home/tryfan/dotnet-rpg/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

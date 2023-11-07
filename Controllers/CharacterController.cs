@@ -1,4 +1,5 @@
 global using dotnet_rpg.models;
+global using dotnet_rpg.Services.CharacterService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,18 +21,32 @@ namespace dotnet_rpg.Controllers
         new Character { Id = 1, Name = "Sam" }
         };
 
+        private readonly ICharacterService _characterService;
+
+        public CharacterController(ICharacterService characterService)
+        {
+            _characterService = characterService;
+        }
         public static Character knight = new Character();
 
         [HttpGet("GetAll")]
-        public ActionResult<List<Character>> Get()
-        {
-            return Ok(characters);
+        public async Task<ActionResult<List<GetCharacterDto>>> Get()
+        {   
+            return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetSingle(int id)
+        public async Task<IActionResult> GetSingle(int id)
         {
-            return Ok(characters.FirstOrDefault(c => c.Id == id));
+
+            return Ok(await _characterService.GetCharacterById(id));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(Character newCharacter)
+        {
+
+            return Ok(await _characterService.AddCharacter(newCharacter));
         }
     }
 }
